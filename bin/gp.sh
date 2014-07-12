@@ -42,8 +42,9 @@ echo "{
 " > .bowerrc
 bower install --save $org/$repo#$branch
 
-# redirect by default to the component folder
-echo "<META http-equiv="refresh" content=\"0;URL=components/$repo/\">" >index.html
+# copy to demo to make it the index and fix the path
+cp components/leaflet-map-component/demo.html index.html
+sed -i '' 's=\.\./=components/=' index.html
 
 # send it all to github
 git add -A .
