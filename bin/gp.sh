@@ -40,7 +40,15 @@ echo "{
   \"directory\": \"components\"
 }
 " > .bowerrc
+
 bower install --save $org/$repo#$branch
+
+cd components
+rm -rf $repo
+git clone git@github.com:$org/$repo.git
+cd $repo
+rm -rf .git
+cd ../..
 
 # copy to demo to make it the index and fix the path
 cp components/leaflet-map-component/demo.html index.html
